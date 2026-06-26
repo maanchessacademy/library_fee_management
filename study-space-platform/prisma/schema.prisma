@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("TURSO_DATABASE_URL")
+}
+
+model Student {
+  id                String        @id @default(cuid())
+  name              String
+  whatsappNumber    String
+  seatNumber        String
+  monthlyFee        Float
+  subscriptionStart DateTime
+  subscriptionEnd   DateTime
+  status            String        @default("ACTIVE")
+  createdAt         DateTime      @default(now())
+  payments          Payment[]
+}
+
+
+model Payment {
+  id        String        @id @default(cuid())
+  studentId String
+  student   Student       @relation(fields: [studentId], references: [id])
+  amount    Float
+  month     String
+  status    String        @default("UNPAID")
+  paidAt    DateTime?
+  notes     String?
+  createdAt DateTime      @default(now())
+}
+
