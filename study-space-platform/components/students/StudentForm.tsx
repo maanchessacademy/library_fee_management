@@ -28,7 +28,7 @@ interface StudentFormProps {
 
 export function StudentForm({ onSubmit, isLoading, defaultValues, submitLabel = "Add Student" }: StudentFormProps) {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<StudentFormValues>({
-    resolver: zodResolver(studentSchema),
+    resolver: zodResolver(studentSchema) as any,
     defaultValues: {
       name: defaultValues?.name || '',
       whatsappNumber: defaultValues?.whatsappNumber || '',

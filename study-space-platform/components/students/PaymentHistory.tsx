@@ -201,7 +201,7 @@ export function PaymentHistory({ payments, studentId, monthlyFee, onRefresh, stu
           <p className="text-sm text-slate-600">
             Marking <strong>{selectedPayment ? formatMonth(selectedPayment.month) : ''}</strong> payment of{' '}
             <strong>{selectedPayment ? formatCurrency(selectedPayment.amount) : ''}</strong> as paid.
-            This will also extend the student's subscription by 1 month.
+            This will also extend the student&apos;s subscription by 1 month.
           </p>
           <Input
             label="Notes (optional)"
